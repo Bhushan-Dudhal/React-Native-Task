@@ -4,21 +4,17 @@ import AllItems from './AllItems';
 import CreateScreen from './CreateScreen';
 
 
-const data=[
-  {id:1,name:"Wheat",stock:5,unit:'kg'},
+
+
+const HomeScreen = () => {
+  const [view ,setView]=useState(0)
+  const [data,setData]=useState([ {id:1,name:"Wheat",stock:5,unit:'kg'},
   {id:2,name:"Rice",stock:15,unit:'kg'},
   {id:3,name:"Basmati Rice",stock:25,unit:'kg'},
   {id:4,name:"Pulse",stock:50,unit:'kg'},
   {id:5,name:"Corn",stock:19,unit:'kg'},
-  {id:6,name:"ilaychi",stock:25,unit:'kg'},
+  {id:6,name:"ilaychi",stock:25,unit:'kg'},])
 
-  
-
-
-]
-
-const HomeScreen = () => {
-  const [view ,setView]=useState(0)
 
   return (
     <View style={styles.container}>
@@ -38,7 +34,7 @@ const HomeScreen = () => {
 
       {view===0&&<AllItems data={data}/>}
       {view===1&&<AllItems  data={data.filter((item)=>item.stock<20)}/>}
-      {view===2&&<CreateScreen/>}             
+      {view===2&&<CreateScreen data={data} setData={setData}/>}             
 
     </View>
   );
